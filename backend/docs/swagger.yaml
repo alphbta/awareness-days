@@ -1,0 +1,73 @@
+definitions:
+  schemas.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  schemas.RegisterRequest:
+    properties:
+      displayName:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/auth/login:
+    post:
+      parameters:
+      - description: Логин и пароль
+        in: body
+        name: user-data
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.LoginRequest'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: invalid json
+        "401":
+          description: invalid email or password
+      summary: Вход ведущего
+      tags:
+      - auth
+  /api/auth/register:
+    post:
+      parameters:
+      - description: Логин, пароль и имя
+        in: body
+        name: user-data
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.RegisterRequest'
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: email, displayName and password (10+ chars) are required
+        "409":
+          description: email already registered
+        "500":
+          description: could not hash password
+      summary: Регистрация ведущего
+      tags:
+      - auth
+  /health:
+    get:
+      responses:
+        "200":
+          description: Сервис работает
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Проверка здоровья сервиса
+      tags:
+      - health
+swagger: "2.0"

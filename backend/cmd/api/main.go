@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"backend/internal"
+
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/joho/godotenv"
 )
@@ -18,7 +19,7 @@ func main() {
 	_ = godotenv.Load()
 	ctx := context.Background()
 
-	db, err := pgxpool.New(ctx, env("DATABASE_URL", "postgres://app:app@localhost:5432/corp_calls?sslmode=disable"))
+	db, err := pgxpool.New(ctx, env("DATABASE_URL", "postgres://app:app@localhost:5432/awareness_days?sslmode=disable"))
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -9,16 +9,25 @@ import (
 	"os"
 	"strings"
 
+	_ "backend/docs"
+
 	"github.com/go-chi/chi/v5"
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
+// @title Awareness Days
+// @version 1.0
+// @description API для управления мероприятием "Дни информирования"
+// @host localhost:8080
+// @BasePath /
+// @schemes http
 func (a *API) Router() http.Handler {
 	r := chi.NewRouter()
 	r.Use(cors, recoverer)
 
-	r.Get("/healthz", func(w http.ResponseWriter, _ *http.Request) {
-		writeJSON(w, 200, map[string]string{"status": "ok"})
-	})
+	r.Get("/health", healthCheck)
+	r.Get("/swagger/*", httpSwagger.Handler(
+		httpSwagger.URL("/swagger/doc.json")))
 
 	r.Route("/api", func(r chi.Router) {
 		r.Post("/auth/register", a.register)
@@ -102,4 +111,12 @@ func writeJSON(w http.ResponseWriter, status int, v any) {
 
 func writeError(w http.ResponseWriter, status int, msg string) {
 	writeJSON(w, status, map[string]string{"error": msg})
+}
+
+// @Summary Проверка здоровья сервиса
+// @Tags health
+// @Success 200 {object} map[string]string "Сервис работает"
+// @Router /health [get]
+func healthCheck(w http.ResponseWriter, _ *http.Request) {
+	writeJSON(w, 200, map[string]string{"status": "ok"})
 }

@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"backend/internal/schemas"
 	"errors"
 	"net/http"
 	"strings"
@@ -42,12 +43,18 @@ func (a *API) parseToken(raw string) (*Claims, error) {
 	return c, nil
 }
 
+// @Summary Регистрация ведущего
+// @Tags auth
+// @Param user-data body schemas.RegisterRequest true "Логин, пароль и имя"
+// @Success 201
+// @Failure 400 "invalid json"
+// @Failure 400 "email, displayName and password (10+ chars) are required"
+// @Failure 500 "could not hash password"
+// @Failure 409 "email already registered"
+// @Router /api/auth/register [post]
 func (a *API) register(w http.ResponseWriter, r *http.Request) {
-	var in struct {
-		Email       string `json:"email"`
-		Password    string `json:"password"`
-		DisplayName string `json:"displayName"`
-	}
+	var in schemas.RegisterRequest
+
 	if decode(r, &in) != nil {
 		writeError(w, 400, "invalid json")
 		return
@@ -78,11 +85,16 @@ func (a *API) register(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, 201, map[string]any{"user": u, "token": token})
 }
 
+// @Summary Вход ведущего
+// @Tags auth
+// @Param user-data body schemas.LoginRequest true "Логин и пароль"
+// @Success 200
+// @Failure 400 "invalid json"
+// @Failure 401 "invalid email or password"
+// @Router /api/auth/login [post]
 func (a *API) login(w http.ResponseWriter, r *http.Request) {
-	var in struct {
-		Email    string `json:"email"`
-		Password string `json:"password"`
-	}
+	var in schemas.LoginRequest
+
 	if decode(r, &in) != nil {
 		writeError(w, 400, "invalid json")
 		return
