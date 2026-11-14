@@ -1,0 +1,15 @@
+# Зависимости Node.js
+frontend/node_modules/
+frontend/dist/
+
+# Переменные окружения
+.env
+*.env
+backend/.env
+frontend/.env
+
+# Бинарники Go и системный мусор
+*.exe
+backend/backend
+.DS_Store
+Thumbs.db
