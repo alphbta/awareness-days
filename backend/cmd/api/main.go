@@ -30,6 +30,7 @@ func main() {
 
 	api := internal.NewAPI(db, internal.Config{
 		JWTSecret: env("JWT_SECRET", "change-me-in-production"),
+		PublicURL: env("WEB_ORIGIN", "http://localhost:5173"),
 	})
 
 	srv := &http.Server{

@@ -78,6 +78,89 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/meetings": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Отсортирован по дате начала (ближайшие первыми).",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "meetings"
+                ],
+                "summary": "Список созданных встреч",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/schemas.Meeting"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    },
+                    "500": {
+                        "description": "could not load meetings"
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Только для пользователей с ролью organizer. Ссылка на встречу генерируется на бэкенде.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "meetings"
+                ],
+                "summary": "Создать встречу",
+                "parameters": [
+                    {
+                        "description": "Данные встречи",
+                        "name": "meeting",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schemas.CreateMeetingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/schemas.Meeting"
+                        }
+                    },
+                    "400": {
+                        "description": "invalid json / title is required / startsAt must be in the future / host not found"
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    },
+                    "403": {
+                        "description": "only organizers can create meetings"
+                    },
+                    "500": {
+                        "description": "could not create meeting"
+                    }
+                }
+            }
+        },
         "/health": {
             "get": {
                 "tags": [
@@ -99,6 +182,28 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "schemas.CreateMeetingRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "Разбираем основные угрозы и способы защиты"
+                },
+                "hostId": {
+                    "type": "string",
+                    "example": "3f1c0c3e-6a3b-4c53-9d63-3a0f8d3c3a11"
+                },
+                "startsAt": {
+                    "description": "RFC 3339, с часовым поясом",
+                    "type": "string",
+                    "example": "2026-12-01T10:00:00+05:00"
+                },
+                "title": {
+                    "type": "string",
+                    "example": "День информирования: кибербезопасность"
+                }
+            }
+        },
         "schemas.LoginRequest": {
             "type": "object",
             "properties": {
@@ -106,6 +211,43 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.Meeting": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "host": {
+                    "$ref": "#/definitions/schemas.MeetingHost"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "startsAt": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.MeetingHost": {
+            "type": "object",
+            "properties": {
+                "displayName": {
+                    "type": "string"
+                },
+                "id": {
                     "type": "string"
                 }
             }
@@ -124,7 +266,16 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "description": "Формат: Bearer <token>",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
     }
+
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it

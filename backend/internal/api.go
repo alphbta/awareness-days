@@ -21,6 +21,10 @@ import (
 // @host localhost:8080
 // @BasePath /
 // @schemes http
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
+// @description Формат: Bearer <token>
 func (a *API) Router() http.Handler {
 	r := chi.NewRouter()
 	r.Use(cors, recoverer)
@@ -36,6 +40,8 @@ func (a *API) Router() http.Handler {
 		r.Group(func(r chi.Router) {
 			r.Use(a.authMiddleware)
 			r.Get("/me", a.me)
+			r.Get("/meetings", a.listMeetings)
+			r.Post("/meetings", a.createMeeting)
 		})
 	})
 

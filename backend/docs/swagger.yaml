@@ -1,9 +1,49 @@
 definitions:
+  schemas.CreateMeetingRequest:
+    properties:
+      description:
+        example: Разбираем основные угрозы и способы защиты
+        type: string
+      hostId:
+        example: 3f1c0c3e-6a3b-4c53-9d63-3a0f8d3c3a11
+        type: string
+      startsAt:
+        description: RFC 3339, с часовым поясом
+        example: '2026-12-01T10:00:00+05:00'
+        type: string
+      title:
+        example: 'День информирования: кибербезопасность'
+        type: string
+    type: object
   schemas.LoginRequest:
     properties:
       email:
         type: string
       password:
+        type: string
+    type: object
+  schemas.Meeting:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      host:
+        $ref: '#/definitions/schemas.MeetingHost'
+      id:
+        type: string
+      link:
+        type: string
+      startsAt:
+        type: string
+      title:
+        type: string
+    type: object
+  schemas.MeetingHost:
+    properties:
+      displayName:
+        type: string
+      id:
         type: string
     type: object
   schemas.RegisterRequest:
@@ -21,47 +61,101 @@ paths:
   /api/auth/login:
     post:
       parameters:
-      - description: Логин и пароль
-        in: body
-        name: user-data
-        required: true
-        schema:
-          $ref: '#/definitions/schemas.LoginRequest'
+        - description: Логин и пароль
+          in: body
+          name: user-data
+          required: true
+          schema:
+            $ref: '#/definitions/schemas.LoginRequest'
       responses:
-        "200":
+        '200':
           description: OK
-        "400":
+        '400':
           description: invalid json
-        "401":
+        '401':
           description: invalid email or password
       summary: Вход ведущего
       tags:
-      - auth
+        - auth
   /api/auth/register:
     post:
       parameters:
-      - description: Логин, пароль и имя
-        in: body
-        name: user-data
-        required: true
-        schema:
-          $ref: '#/definitions/schemas.RegisterRequest'
+        - description: Логин, пароль и имя
+          in: body
+          name: user-data
+          required: true
+          schema:
+            $ref: '#/definitions/schemas.RegisterRequest'
       responses:
-        "201":
+        '201':
           description: Created
-        "400":
+        '400':
           description: email, displayName and password (10+ chars) are required
-        "409":
+        '409':
           description: email already registered
-        "500":
+        '500':
           description: could not hash password
       summary: Регистрация ведущего
       tags:
-      - auth
+        - auth
+  /api/meetings:
+    get:
+      description: Отсортирован по дате начала (ближайшие первыми).
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/schemas.Meeting'
+            type: array
+        '401':
+          description: unauthorized
+        '500':
+          description: could not load meetings
+      security:
+        - BearerAuth: []
+      summary: Список созданных встреч
+      tags:
+        - meetings
+    post:
+      consumes:
+        - application/json
+      description: Только для пользователей с ролью organizer. Ссылка на встречу генерируется
+        на бэкенде.
+      parameters:
+        - description: Данные встречи
+          in: body
+          name: meeting
+          required: true
+          schema:
+            $ref: '#/definitions/schemas.CreateMeetingRequest'
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/schemas.Meeting'
+        '400':
+          description: invalid json / title is required / startsAt must be in the
+            future / host not found
+        '401':
+          description: unauthorized
+        '403':
+          description: only organizers can create meetings
+        '500':
+          description: could not create meeting
+      security:
+        - BearerAuth: []
+      summary: Создать встречу
+      tags:
+        - meetings
   /health:
     get:
       responses:
-        "200":
+        '200':
           description: Сервис работает
           schema:
             additionalProperties:
@@ -69,5 +163,11 @@ paths:
             type: object
       summary: Проверка здоровья сервиса
       tags:
-      - health
-swagger: "2.0"
+        - health
+securityDefinitions:
+  BearerAuth:
+    description: 'Формат: Bearer <token>'
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: '2.0'

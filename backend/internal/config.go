@@ -8,6 +8,7 @@ import (
 
 type Config struct {
 	JWTSecret string
+	PublicURL string
 }
 
 type API struct {
