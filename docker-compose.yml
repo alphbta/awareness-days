@@ -15,6 +15,47 @@ services:
       interval: 5s
       timeout: 3s
       retries: 20
+      
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    networks:
+      - livekit-net
+
+  livekit:
+    image: livekit/livekit-server:v1.13
+    restart: unless-stopped
+    command: --config /etc/livekit.yaml
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+      - "50000-50200:50000-50200/udp"
+    volumes:
+      - ./backend/livekit.yaml:/etc/livekit.yaml:ro
+    depends_on:
+      - redis
+    networks:
+      - livekit-net
+
+  egress:
+    image: livekit/egress:v1.15
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      EGRESS_CONFIG_FILE: /etc/egress.yaml
+    volumes:
+      - ./backend/egress.yaml:/etc/egress.yaml:ro
+      - ./backend/recordings:/out               # локальная папка для записей
+    depends_on:
+      - livekit
+      - redis
+    networks:
+      - livekit-net
+
+networks:
+  livekit-net:
+    driver: bridge
 
 volumes:
   postgres_data:
