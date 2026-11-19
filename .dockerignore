@@ -5,5 +5,3 @@ bin
 node_modules
 .idea
 .vscode
-backend/egress.yaml
-backend/livekit.yaml

@@ -13,3 +13,7 @@ frontend/.env
 backend/backend
 .DS_Store
 Thumbs.db
+
+# Конфиги для livekit
+egress.yaml
+livekit.yaml
