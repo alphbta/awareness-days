@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"backend/internal"
+	"backend/internal/webrtc"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/joho/godotenv"
@@ -28,10 +29,15 @@ func main() {
 		log.Fatal(err)
 	}
 
-	api := internal.NewAPI(db, internal.Config{
+	cfg := internal.Config{
 		JWTSecret: env("JWT_SECRET", "change-me-in-production"),
 		PublicURL: env("WEB_ORIGIN", "http://localhost:5173"),
-	})
+	}
+
+	if key, secret, url := os.Getenv("LIVEKIT_API_KEY"), os.Getenv("LIVEKIT_API_SECRET"), os.Getenv("LIVEKIT_URL"); key != "" && secret != "" && url != "" {
+		cfg.Video = webrtc.NewLiveKitProvider(key, secret, url)
+	}
+	api := internal.NewAPI(db, cfg)
 
 	srv := &http.Server{
 		Addr:              env("API_ADDR", ":8080"),

@@ -10,6 +10,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/migrations/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
       - ./backend/migrations/002_meetings.sql:/docker-entrypoint-initdb.d/002_meetings.sql:ro
+      - ./backend/migrations/003_chat_messages.sql:/docker-entrypoint-initdb.d/003_chat_messages.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U app -d awareness_days"]
       interval: 5s

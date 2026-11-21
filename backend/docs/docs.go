@@ -161,6 +161,40 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/meetings/{token}/ws": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Открывает WebSocket к комнате встречи ({token} — последняя часть ссылки на встречу).\nБраузер не умеет слать заголовки при WebSocket, поэтому JWT передаётся в query: ?token=<jwt>.\n\nКлиент → сервер: {\"channel\":\"chat\"|\"questions\",\"text\":\"...\"}.\nСервер → клиент: {\"type\":\"history\",\"channel\":\"chat\",\"messages\":[...]} (при входе, по одному на чат),\n{\"type\":\"message\",\"channel\":\"chat\",\"message\":{id,channel,author{id,displayName,role},text,createdAt}}\nи {\"type\":\"error\",\"error\":\"...\"}.",
+                "tags": [
+                    "meetings"
+                ],
+                "summary": "Комната встречи: чаты по WebSocket",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Токен из ссылки на встречу",
+                        "name": "token",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "101": {
+                        "description": "Switching Protocols"
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    },
+                    "404": {
+                        "description": "meeting not found"
+                    }
+                }
+            }
+        },
         "/health": {
             "get": {
                 "tags": [
@@ -275,7 +309,6 @@ const docTemplate = `{
             "in": "header"
         }
     }
-
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it

@@ -49,6 +49,7 @@ func (a *API) Router() http.Handler {
 			r.Get("/me", a.me)
 			r.Get("/meetings", a.listMeetings)
 			r.Post("/meetings", a.createMeeting)
+			r.Get("/meetings/{token}/ws", a.meetingWS)
 		})
 	})
 

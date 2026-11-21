@@ -152,6 +152,41 @@ paths:
       summary: Создать встречу
       tags:
         - meetings
+  /api/meetings/{token}/ws:
+    get:
+      description: 'Открывает WebSocket к комнате встречи ({token} — последняя часть
+        ссылки на встречу).
+
+        Браузер не умеет слать заголовки при WebSocket, поэтому JWT передаётся в query:
+        `?token=<jwt>`.
+
+
+        Клиент → сервер: `{"channel":"chat"|"questions","text":"..."}`.
+
+        Сервер → клиент: `{"type":"history","channel":"chat","messages":[...]}` (при
+        входе, по одному на чат),
+
+        `{"type":"message","channel":"chat","message":{id,channel,author{id,displayName,role},text,createdAt}}`
+
+        и `{"type":"error","error":"..."}`.'
+      parameters:
+        - description: Токен из ссылки на встречу
+          in: path
+          name: token
+          required: true
+          type: string
+      responses:
+        '101':
+          description: Switching Protocols
+        '401':
+          description: unauthorized
+        '404':
+          description: meeting not found
+      security:
+        - BearerAuth: []
+      summary: 'Комната встречи: чаты по WebSocket'
+      tags:
+        - meetings
   /health:
     get:
       responses:
