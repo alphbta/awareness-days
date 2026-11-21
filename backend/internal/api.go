@@ -10,7 +10,6 @@ import (
 	"strings"
 
 	_ "backend/docs"
-	"backend/internal/webrtc"
 
 	"github.com/go-chi/chi/v5"
 	httpSwagger "github.com/swaggo/http-swagger"
@@ -34,12 +33,6 @@ func (a *API) Router() http.Handler {
 	r.Get("/swagger/*", httpSwagger.Handler(
 		httpSwagger.URL("/swagger/doc.json")))
 
-	//тестовые ендпоинты
-	r.Get("/token", webrtc.TokenHandler)
-	/*
-		r.Post("/record", webrtc.RecordHandler)
-		r.Delete("/record", webrtc.StopRecordHandler)
-	*/
 	r.Route("/api", func(r chi.Router) {
 		r.Post("/auth/register", a.register)
 		r.Post("/auth/login", a.login)
