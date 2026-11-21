@@ -14,12 +14,10 @@ const ROLE_INFO = {
 
 function RoleSelect() {
   const [role, setRole] = useState<RoleType>('member');
-  
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -41,8 +39,8 @@ function RoleSelect() {
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError('');
-
     const trimmedName = displayName.trim();
+
     if (trimmedName.length < 2) {
       setError('Введите имя и фамилию.');
       return;
@@ -55,13 +53,10 @@ function RoleSelect() {
           setError('Введите логин и пароль.');
           return;
         }
-
         // Реальная авторизация ведущего через API
         const result = await authApi.login(login.trim().toLowerCase(), password);
-        
         // Сохраняем JWT-токен для дальнейших запросов и восстановления сессии
         tokenStorage.set(result.token);
-
         localStorage.setItem(
           'awareness-days-role-pending',
           JSON.stringify({ role, displayName: result.user.displayName || trimmedName }),
@@ -73,9 +68,8 @@ function RoleSelect() {
           JSON.stringify({ role, displayName: trimmedName }),
         );
       }
-      
       // Перенаправляем на главную, где App.tsx подхватит токен
-      window.location.href = '/';
+      window.location.href = role === 'organizer' ? '/dashboard' : '/';
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Не удалось выполнить вход.');
     } finally {
@@ -90,7 +84,6 @@ function RoleSelect() {
       <PageBackground />
       <section className="auth-layout">
         <section className="auth-card role-card">
-          
           {/* Логотип */}
           <div className="brand">
             <span className="brand-mark" aria-hidden="true">
@@ -110,8 +103,8 @@ function RoleSelect() {
           <div className="card-header">
             <h1>{isOrganizer ? 'Вход для ведущего' : 'Вход на встречу'}</h1>
             <p className="card-subtitle" style={{ whiteSpace: 'pre-line' }}>
-              {isOrganizer 
-                ? 'Войдите в свой аккаунт, чтобы\nсоздать новую встречу' 
+              {isOrganizer
+                ? 'Войдите в свой аккаунт, чтобы\nсоздать новую встречу'
                 : 'Выберите, как вы хотите войти'}
             </p>
           </div>
@@ -143,29 +136,8 @@ function RoleSelect() {
             </button>
           </div>
 
-          {/* Блок с информацией показываем только для участника */}
-          {!isOrganizer && (
-            <div className="role-info role-info-member">
-              <div className="role-info-icon">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute' }}>
-                  <circle cx="24" cy="24" r="24" fill="#F0A33A" fillOpacity="0.35"/>
-                </svg>
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'relative', zIndex: 1 }}>
-                  <path opacity="0.2" d="M16.0002 29.6666C23.5481 29.6666 29.6668 23.5479 29.6668 16C29.6668 8.45209 23.5481 2.33331 16.0002 2.33331C8.45227 2.33331 2.3335 8.45209 2.3335 16C2.3335 23.5479 8.45227 29.6666 16.0002 29.6666Z" fill="#F0A33A"/>
-                  <path d="M29.6668 16C29.6668 23.5479 23.5481 29.6666 16.0002 29.6666C8.45227 29.6666 2.3335 23.5479 2.3335 16C2.3335 8.45209 8.45227 2.33331 16.0002 2.33331C23.5481 2.33331 29.6668 8.45209 29.6668 16Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="#F0A33A"/>
-                  <path d="M21.3869 21.04L17.4803 18.44C16.3203 17.6667 15.7469 17.28 15.4269 16.68C15.1069 16.0933 15.1069 15.4 15.1069 14V8.41333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="#F0A33A"/>
-                </svg>
-              </div>
-              <div className="role-info-content">
-                <h3>{ROLE_INFO.member.title}</h3>
-                <p>{ROLE_INFO.member.description}</p>
-              </div>
-            </div>
-          )}
-
           {/* Форма */}
           <form className="role-form" onSubmit={submit}>
-            
             {/* Поля логина и пароля только для ведущего */}
             {isOrganizer && (
               <>
@@ -182,7 +154,6 @@ function RoleSelect() {
                     />
                   </div>
                 </label>
-
                 <label className="field">
                   <span className="field-label">Пароль</span>
                   <div className="input-shell">
@@ -237,6 +208,27 @@ function RoleSelect() {
               {loading ? <span className="loader small" /> : 'Войти'}
             </button>
           </form>
+
+          {/* Блок ожидания встречи — внизу, после кнопки «Войти», как на макете.
+              Показываем только для участника */}
+          {!isOrganizer && (
+            <div className="role-info role-info-member">
+              <div className="role-info-icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute' }}>
+                  <circle cx="24" cy="24" r="24" fill="#F0A33A" fillOpacity="0.35"/>
+                </svg>
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'relative', zIndex: 1 }}>
+                  <path opacity="0.2" d="M16.0002 29.6666C23.5481 29.6666 29.6668 23.5479 29.6668 16C29.6668 8.45209 23.5481 2.33331 16.0002 2.33331C8.45227 2.33331 2.3335 8.45209 2.3335 16C2.3335 23.5479 8.45227 29.6666 16.0002 29.6666Z" fill="#F0A33A"/>
+                  <path d="M29.6668 16C29.6668 23.5479 23.5481 29.6666 16.0002 29.6666C8.45227 29.6666 2.3335 23.5479 2.3335 16C2.3335 8.45209 8.45227 2.33331 16.0002 2.33331C23.5481 2.33331 29.6668 8.45209 29.6668 16Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="#F0A33A"/>
+                  <path d="M21.3869 21.04L17.4803 18.44C16.3203 17.6667 15.7469 17.28 15.4269 16.68C15.1069 16.0933 15.1069 15.4 15.1069 14V8.41333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="#F0A33A"/>
+                </svg>
+              </div>
+              <div className="role-info-content">
+                <h3>{ROLE_INFO.member.title}</h3>
+                <p>{ROLE_INFO.member.description}</p>
+              </div>
+            </div>
+          )}
         </section>
       </section>
     </main>
