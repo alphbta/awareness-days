@@ -12,11 +12,16 @@
 }
 
 * { box-sizing: border-box; }
+
 html, body, #root { width: 100%; min-width: 320px; min-height: 100%; margin: 0; }
 body { min-height: 100vh; }
+
 button, input { font: inherit; }
 button { cursor: pointer; }
 
+/* =========================================
+АВТОРИЗАЦИЯ / РОЛЬ
+========================================= */
 .auth-page {
   position: relative;
   display: flex;
@@ -47,14 +52,14 @@ button { cursor: pointer; }
 /* --- Карточка --- */
 .auth-card {
   width: 600px;
-  min-height: 570px; 
-  padding: 32px; 
+  min-height: 570px;
+  padding: 32px;
   background: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0px 4px 20px rgba(32, 43, 60, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 24px; 
+  gap: 24px;
 }
 
 .brand {
@@ -90,13 +95,13 @@ button { cursor: pointer; }
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 24px; 
+  gap: 24px;
 }
 
 .auth-card h1 {
   margin: 0;
   color: #202B3C;
-  font-size: 38px; 
+  font-size: 38px;
   line-height: 46px;
   font-weight: 700;
   letter-spacing: -.5px;
@@ -107,7 +112,7 @@ button { cursor: pointer; }
   width: 100%;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 22px; 
+  font-size: 22px;
   line-height: 32px;
   text-align: center;
   color: #667085;
@@ -119,20 +124,20 @@ button { cursor: pointer; }
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 24px; 
+  gap: 24px;
 }
 
 .field {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 24px; 
+  gap: 24px;
 }
 
 .field > span, .role-form .field > .field-label {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 20px; 
+  font-size: 20px;
   line-height: 24px;
   color: #202B3C;
   margin: 0;
@@ -141,7 +146,7 @@ button { cursor: pointer; }
 .input-shell {
   display: flex;
   width: 100%;
-  height: 56px; 
+  height: 56px;
   align-items: center;
   gap: 12px;
   padding: 0 16px;
@@ -166,7 +171,7 @@ button { cursor: pointer; }
   color: #202B3C;
   background: transparent;
   font-family: 'Inter', sans-serif;
-  font-size: 18px; 
+  font-size: 18px;
 }
 
 .input-shell input::placeholder {
@@ -187,7 +192,7 @@ button { cursor: pointer; }
 .submit-button {
   display: flex;
   width: 100%;
-  height: 56px; 
+  height: 56px;
   align-items: center;
   justify-content: center;
   border: 0;
@@ -195,8 +200,8 @@ button { cursor: pointer; }
   color: white;
   background: #3474EC;
   font-family: 'Inter', sans-serif;
-  font-size: 20px; 
-  font-weight: 400; 
+  font-size: 20px;
+  font-weight: 400;
   transition: background .18s, transform .18s;
 }
 
@@ -223,7 +228,7 @@ button { cursor: pointer; }
 .signed-in {
   display: flex;
   flex-direction: column;
-  gap: 24px; 
+  gap: 24px;
 }
 .signed-in h1 { margin: 0; }
 .signed-email { margin: 0; color: #8794a8; font-size: 16px; }
@@ -233,7 +238,6 @@ button { cursor: pointer; }
   height: auto;
   min-height: 625px;
 }
-
 .role-card .card-header h1 { font-size: 40px; line-height: 48px; margin: 0; }
 .role-card h1 { font-size: 40px; line-height: 48px; letter-spacing: -0.5px; margin: 0; }
 
@@ -252,24 +256,23 @@ button { cursor: pointer; }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 48px; 
+  height: 48px;
   padding: 0;
   border: 0;
   border-radius: 8px;
   background: #eaf1ff;
   color: #202b3c;
   font-family: 'Inter', sans-serif;
-  font-size: 20px; 
-  font-weight: 400; 
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   transition: background 0.18s, color 0.18s;
 }
 
-.role-tab.active { 
-  background: #3474ec; 
-  color: #fff; 
+.role-tab.active {
+  background: #3474ec;
+  color: #fff;
 }
-
 .role-tab.active svg { color: #fff; }
 
 .role-info {
@@ -281,7 +284,6 @@ button { cursor: pointer; }
   background: rgba(240, 163, 58, 0.15);
 }
 
-/* Контейнер иконки обновлен под размеры SVG */
 .role-info-icon {
   position: relative;
   flex-shrink: 0;
@@ -293,28 +295,24 @@ button { cursor: pointer; }
 }
 
 .role-info-content { flex: 1; min-width: 0; }
-
 .role-info-content h3 {
   margin: 0 0 4px;
   font-family: 'Inter', sans-serif;
-  font-size: 20px; 
-  font-weight: 400; 
+  font-size: 20px;
+  font-weight: 400;
   color: #202b3c;
   line-height: 1.4;
 }
-
 .role-info-content p {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  font-size: 20px; 
+  font-size: 20px;
   font-weight: 400;
-  color: #667085; 
+  color: #667085;
   line-height: 1.4;
 }
 
-.role-form {
-  margin: 0; 
-}
+.role-form { margin: 0; }
 
 /* --- Загрузка --- */
 .loader { width: 22px; height: 22px; border: 2px solid rgba(52,119,237,.2); border-top-color: #3477ed; border-radius: 50%; animation: rotate .7s linear infinite; }
@@ -324,7 +322,7 @@ button { cursor: pointer; }
 @keyframes rotate { to { transform: rotate(360deg); } }
 
 @media (min-width: 1000px) {
-  .auth-card { padding: 32px; } 
+  .auth-card { padding: 32px; }
 }
 
 @media (max-width: 520px) {
@@ -332,4 +330,1624 @@ button { cursor: pointer; }
   .auth-card { padding: 28px 23px 29px; }
   .decor-top-left { width: 82vw; height: 38vh; }
   .decor-bottom-right { width: 85vw; height: 42vh; }
+}
+
+/* =========================================
+ЛИЧНЫЙ КАБИНЕТ ОРГАНИЗАТОРА
+========================================= */
+.dash-page {
+  min-height: 100vh;
+  background-color: #F4F6F9;
+  font-family: 'Inter', sans-serif;
+  color: #202B3C;
+  display: flex;
+  flex-direction: column;
+  /* Отступы страницы: 50 сверху/снизу, 64 слева/справа */
+  padding: 50px 64px;
+  box-sizing: border-box;
+}
+
+/* Шапка */
+.dash-header {
+  width: 100%;
+  height: 60px;
+  padding: 0 24px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.dash-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* SVG-иконка бренда: сам содержит синий квадрат, фон не нужен */
+.dash-brand-icon {
+  width: 44px;
+  height: 44px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.dash-brand-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3474EC;
+  line-height: 1;
+}
+
+/* Аватар */
+.dash-user { cursor: pointer; }
+
+.dash-avatar {
+  width: 36px;
+  height: 36px;
+  background: #3474EC;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  transition: opacity 0.2s;
+}
+.dash-avatar:hover { opacity: 0.85; }
+
+/* Основной контент */
+.dash-content {
+  width: 100%;
+  min-height: 900px;
+  margin-top: 30px; /* Отступ от шапки до контента — 30 */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dash-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Заголовок "Ближайшие встречи" */
+.dash-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 46px;
+}
+
+.dash-section-header h1 {
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 700;
+  margin: 0;
+  color: #1F2937;
+}
+
+/* Кнопки */
+.dash-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #3474EC;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 24px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+.dash-btn-primary:hover { background: #2563EB; }
+
+.dash-btn-icon {
+  background: transparent;
+  border: none;
+  color: #98A2B3;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dash-btn-icon:hover {
+  background: #F4F6F9;
+  color: #1F2937;
+}
+
+/* Карточка ближайшей встречи (если есть) */
+.dash-upcoming-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  height: 188px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.upcoming-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.upcoming-row-bottom {
+  align-items: flex-end;
+}
+
+.upcoming-icon-wrap {
+  width: 40px;
+  height: 40px;
+  background: #EEF4FF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dash-upcoming-main {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-icon-box {
+  width: 56px;
+  height: 56px;
+  background: #EEF4FF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.dash-icon-box.small {
+  width: 32px;
+  height: 32px;
+}
+
+.dash-upcoming-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Увеличенный заголовок */
+.upcoming-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: #1F2937;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.upcoming-datetime {
+  font-size: 16px;
+  color: #6B7280;
+  margin: 0;
+  font-weight: 400;
+}
+
+.upcoming-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.upcoming-meta {
+  flex: 1;
+  font-size: 15px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.dash-upcoming-info h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #1F2937;
+}
+.dash-date {
+  font-size: 16px;
+  color: #4B5563;
+  margin: 0 0 12px 0;
+}
+.dash-meta {
+  font-size: 16px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.dash-upcoming-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.upcoming-meta-spacer {
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.dash-badge {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+.dash-badge-green {
+  background: #D1FADF;
+  color: #027A48;
+}
+
+.dash-btn-launch {
+  height: 44px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.dash-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dash-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 4px;
+  min-width: 140px;
+  box-shadow: 0 8px 24px rgba(32, 43, 60, 0.1);
+}
+
+.dash-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1F2937;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.dash-menu-item:hover {
+  background: #F4F6F9;
+}
+
+.dash-menu-item-danger {
+  color: #DC2626;
+}
+
+.dash-menu-item-danger:hover {
+  background: #FEF2F2;
+}
+
+/* Заглушка "Пока нет ближайших встреч" */
+.dash-empty-box {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 24px 0; /* Сверху и снизу — 24 */
+  gap: 15px; /* Между иконкой, текстом и кнопкой — 15 */
+}
+
+.dash-empty-icon {
+  width: 64px;
+  height: 64px;
+  background: #EEF4FF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.dash-empty-box h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #1F2937;
+}
+
+.dash-empty-box p {
+  font-size: 15px;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Крупная кнопка в заглушке */
+.dash-empty-box .dash-btn-primary {
+  height: 52px;
+  padding: 0 32px;
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+/* "Мои встречи" */
+.dash-subtitle {
+  font-size: 28px;
+  line-height: 39px;
+  font-weight: 700;
+  margin: 0;
+  color: #1F2937;
+}
+
+/* Табы */
+.dash-tabs {
+  display: flex;
+  gap: 24px;
+  height: 47px;
+  margin: 0; /* Отступы дают gap секции = 24 */
+}
+
+.dash-tab {
+  background: transparent;
+  border: none;
+  padding: 0;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6B7280;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+}
+.dash-tab:hover { color: #1F2937; }
+.dash-tab.active { color: #3474EC; }
+
+/* Подчёркивание только под текстом */
+.dash-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #3474EC;
+}
+
+/* Список встреч */
+.dash-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dash-list-item {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  height: 80px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.dash-list-item-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-list-icon {
+  width: 40px;
+  height: 40px;
+  background: #EEF4FF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dash-list-date {
+  font-size: 16px;
+  font-weight: 500;
+  color: #6B7280;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.dash-list-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1F2937;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-list-item-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dash-list-participants {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6B7280;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.dash-list-participants svg {
+  color: #98A2B3;
+}
+
+/* Пустой список */
+.dash-empty-list {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  height: 163px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.dash-empty-list p {
+  margin: 0;
+  color: #9CA3AF;
+  font-size: 16px;
+}
+
+/* =========================================
+СТРАНИЦА СОЗДАНИЯ ВСТРЕЧИ
+========================================= */
+.create-content {
+  width: 100%;
+  gap: 30px; /* Между шапкой-текстом, карточкой и кнопкой — 30 */
+}
+
+.create-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px; /* Между текстовыми элементами — 15 */
+  padding: 10px 0; /* Сверху и снизу — по 10 */
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: #3474EC;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0; /* Убираю старый отступ — расстояние даёт gap */
+  font-family: inherit;
+}
+
+.back-link:hover {
+
+}
+
+.create-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.create-subtitle {
+  font-size: 18px;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Карточка ввода: 40 сверху/снизу, 50 по бокам, зазоры 40 */
+.create-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 0; /* Расстояние сверху даёт gap контейнера = 30 */
+  max-width: 100%;
+}
+
+/* Название поля слева, поле ввода справа — как в макете.
+   minmax(0, 1fr) — колонка контента может сжиматься, ничего не вылезает */
+.form-row {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.form-row > * {
+  min-width: 0;
+}
+
+.form-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F2937;
+  padding-top: 12px;
+}
+.form-label span {
+  color: #EF4444;
+  margin-left: 2px;
+}
+
+.form-input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #1F2937;
+  background: #FFFFFF;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+.form-input:focus { border-color: #3474EC; }
+.form-input::placeholder { color: #9CA3AF; }
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Селект ведущего */
+.select-wrapper { position: relative; }
+.form-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+}
+.select-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3474EC;
+  pointer-events: none;
+}
+
+/* Дата и время: только текст + иконка, без нативного виджета */
+.date-time-row {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.field-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 12px 0 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+.field-box:hover { border-color: #3474EC; }
+
+/* Фиксируем размеры как на макете, но с корректным сжатием при увеличении масштаба:
+   на широком экране = ровно 340px и 420px (max-width),
+   при нехватке места поля сжимаются пропорционально (34:42) и не вылезают за карточку */
+.date-field {
+  flex: 34 1 0;
+  min-width: 0;
+  max-width: 340px;
+}
+.time-field {
+  flex: 42 1 0;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.field-text {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  color: #1F2937;
+  cursor: pointer;
+}
+.field-text::placeholder { color: #9CA3AF; }
+
+.date-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.time-dash {
+  color: #9CA3AF;
+  font-size: 15px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.time-icon {
+  flex-shrink: 0;
+  color: #98A2B3;
+}
+
+/* Скрытый нативный input: нужен для работы формы, но не виден */
+.hidden-native {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* Вариант с нативными полями (если используется .input-with-icon) — тоже фиксируем от переполнения */
+.date-time-row .input-with-icon {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.input-with-icon .form-input {
+  padding-right: 40px;
+  min-width: 0;
+  width: 100%;
+}
+.input-with-icon .form-input[type="date"],
+.input-with-icon .form-input[type="time"] {
+  min-width: 0;
+}
+.input-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+  pointer-events: none;
+}
+
+/* Кнопка "Сохранить" — справа под карточкой */
+.create-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0; /* Расстояние до карточки даёт gap контейнера = 30 */
+}
+
+/* ... existing code ... */
+/* Селект ведущего: кастомный дропдаун по макету */
+.host-select {
+  position: relative;
+  width: 100%;
+}
+
+.host-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+}
+
+.host-placeholder {
+  color: #9CA3AF;
+}
+
+.host-value {
+  color: #1F2937;
+}
+
+.host-trigger .select-icon {
+  position: static;
+  transform: none;
+  flex-shrink: 0;
+  color: #3474EC;
+  transition: transform 0.2s;
+}
+
+.host-trigger .select-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Выпадающий список */
+.host-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #F5F7FA;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(32, 43, 60, 0.08);
+}
+
+/* Пункт списка: иконка + имя, белая карточка с рамкой */
+.host-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #1F2937;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+/* Активный/ховер — голубая подложка как на макете */
+.host-option:hover,
+.host-option.selected {
+  background: #EAF1FF;
+  border-color: #EAF1FF;
+}
+
+.host-option-icon {
+  flex-shrink: 0;
+  color: #98A2B3;
+}
+
+.host-option:hover .host-option-icon,
+.host-option.selected .host-option-icon {
+  color: #3474EC;
+}
+
+
+/* =========================================
+АДАПТИВ
+========================================= */
+@media (max-width: 768px) {
+  .dash-page { padding: 24px; }
+  .form-row { grid-template-columns: 1fr; gap: 8px; }
+  .form-label { padding-top: 0; }
+  .date-time-row { flex-direction: column; }
+  .date-field,
+  .time-field {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* ... existing code ... */
+
+/* =========================================
+СТРАНИЦА ПОДКЛЮЧЕНИЯ К ВСТРЕЧЕ
+========================================= */
+.join-content {
+  gap: 30px; /* шапка→текст (margin-top 30), текст→карточка, карточка→кнопка */
+  min-height: 0;
+}
+
+/* Основной блок: 40 сверху/снизу, 50 по бокам, разделитель по центру с зазором 40 */
+.join-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 40px 50px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+  column-gap: 40px;
+  box-sizing: border-box;
+}
+
+.join-divider {
+  width: 1px;
+  background: #E5E7EB;
+  align-self: stretch;
+}
+
+.join-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.join-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.join-group-separated {
+  border-top: 1px solid #E5E7EB;
+  padding-top: 24px;
+}
+
+/* Заголовок секции: иконка в голубом круге + текст */
+.join-section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.join-section-head h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1F2937;
+  letter-spacing: -0.01em;
+}
+
+.join-section-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #EEF4FF;
+  color: #3474EC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Превью камеры */
+.join-preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  background: #E6EBF2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.join-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #101828;
+}
+
+.join-video.mirrored,
+.room-video.mirrored {
+  transform: scaleX(-1);
+}
+
+.join-preview-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+}
+
+.join-preview-glyph {
+  color: #98A2B3;
+}
+
+.join-preview-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4B5563;
+}
+
+.join-preview-note {
+  margin: 0;
+  font-size: 14px;
+  color: #6B7280;
+  max-width: 320px;
+}
+
+.join-namechip {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.72);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+.room-chip-muted {
+  color: #FCA5A5;
+}
+
+.join-retry {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 8px;
+  background: #3474EC;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.join-retry:hover {
+  background: #2563EB;
+}
+
+/* Ряд управления камерой */
+.join-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.join-switch-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.join-switch-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1F2937;
+}
+
+.join-state-icon {
+  color: #98A2B3;
+  flex-shrink: 0;
+}
+
+.join-state-icon.on {
+  color: #3474EC;
+}
+
+/* Переключатель */
+.join-switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  border: none;
+  border-radius: 999px;
+  background: #D5DCE6;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.join-switch.on {
+  background: #3474EC;
+}
+
+.join-switch:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.join-switch:focus-visible {
+  outline: 2px solid #3474EC;
+  outline-offset: 2px;
+}
+
+.join-switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.25);
+  transition: transform 0.2s;
+}
+
+.join-switch.on .join-switch-knob {
+  transform: translateX(20px);
+}
+
+/* Кнопка зеркалирования */
+.join-icon-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.join-icon-btn:hover {
+  border-color: #3474EC;
+  color: #3474EC;
+}
+
+.join-icon-btn.active {
+  background: #EAF1FF;
+  border-color: #EAF1FF;
+  color: #3474EC;
+}
+
+/* Поля и подписи */
+.join-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.join-field-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4B5563;
+}
+
+.join-hint {
+  margin: 0;
+  font-size: 13px;
+  color: #98A2B3;
+  line-height: 1.45;
+}
+
+/* Дропдаун устройств — в стилистике выпадающего списка ведущего */
+.join-select {
+  position: relative;
+  width: 100%;
+}
+
+.join-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.join-select-trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.join-select-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.join-select-chevron {
+  color: #3474EC;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.join-select-chevron.open {
+  transform: rotate(180deg);
+}
+
+.join-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  background: #F5F7FA;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 240px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(32, 43, 60, 0.1);
+  scrollbar-width: thin;
+  scrollbar-color: #C9D4E4 transparent;
+}
+
+.join-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.join-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.join-menu::-webkit-scrollbar-thumb {
+  background: #C9D4E4;
+  border-radius: 8px;
+}
+
+.join-menu::-webkit-scrollbar-thumb:hover {
+  background: #3474EC;
+}
+
+.join-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #1F2937;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.join-menu-item:hover,
+.join-menu-item.selected {
+  background: #EAF1FF;
+  border-color: #EAF1FF;
+}
+
+.join-menu-item-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.join-menu-check {
+  color: #3474EC;
+  flex-shrink: 0;
+}
+
+/* Индикатор уровня микрофона */
+.join-meter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.join-meter-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3474EC;
+  font-variant-numeric: tabular-nums;
+}
+
+.join-meter {
+  display: flex;
+  gap: 3px;
+  height: 14px;
+}
+
+.join-meter-seg {
+  flex: 1;
+  border-radius: 3px;
+  background: #E5E7EB;
+  transition: background 0.08s linear;
+}
+
+.join-meter-seg.lit.base { background: #3474EC; }
+.join-meter-seg.lit.warn { background: #F59E0B; }
+.join-meter-seg.lit.hot  { background: #EF4444; }
+
+/* Громкость */
+.join-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.join-range {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.join-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #3474EC;
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.2);
+  transition: transform 0.15s;
+}
+
+.join-range::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+.join-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #3474EC;
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.2);
+}
+
+.join-range:focus-visible {
+  outline: 2px solid #3474EC;
+  outline-offset: 4px;
+}
+
+/* Тест динамиков */
+.join-test-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+  height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 8px;
+  background: #EAF1FF;
+  color: #3474EC;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.join-test-btn:hover:not(:disabled) {
+  background: #DCE8FF;
+}
+
+.join-test-btn:disabled {
+  cursor: wait;
+}
+
+.join-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.join-eq i {
+  width: 3px;
+  border-radius: 2px;
+  background: #3474EC;
+  animation: join-eq 0.7s ease-in-out infinite;
+}
+
+.join-eq i:nth-child(1) { height: 8px; animation-delay: 0s; }
+.join-eq i:nth-child(2) { height: 14px; animation-delay: 0.15s; }
+.join-eq i:nth-child(3) { height: 10px; animation-delay: 0.3s; }
+
+@keyframes join-eq {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1); }
+}
+
+/* Кнопка подключения */
+.join-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.join-actions .dash-btn-primary:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+/* =========================================
+КОМНАТА ВСТРЕЧИ
+========================================= */
+.room-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.room-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: 62vh;
+  border-radius: 12px;
+  background: #101828;
+  overflow: hidden;
+}
+
+.room-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.room-avatar {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-avatar-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #3474EC;
+  color: #FFFFFF;
+  font-size: 48px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 12px rgba(52, 116, 236, 0.18);
+}
+
+.room-topbar {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.72);
+  color: #D1FADF;
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+.room-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #12B76A;
+  animation: room-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes room-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(18, 183, 106, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(18, 183, 106, 0); }
+}
+
+.room-timer {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.72);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  backdrop-filter: blur(4px);
+}
+
+.room-namechip {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.72);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+.room-waiting {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.72);
+  color: #C9D4E4;
+  font-size: 13px;
+  backdrop-filter: blur(4px);
+}
+
+.room-dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.room-dots i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #C9D4E4;
+  animation: room-dots 1.2s ease-in-out infinite;
+}
+
+.room-dots i:nth-child(2) { animation-delay: 0.2s; }
+.room-dots i:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes room-dots {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+
+.room-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.room-round {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: #1F2937;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.room-round:hover {
+  transform: translateY(-1px);
+  background: #111827;
+}
+
+.room-round.off {
+  background: #EF4444;
+}
+
+.room-round.off:hover {
+  background: #DC2626;
+}
+
+.dash-btn-danger {
+  background: #DC2626;
+}
+
+.dash-btn-danger:hover {
+  background: #B91C1C;
+}
+
+/* Адаптив */
+@media (max-width: 1100px) {
+  .join-card {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
+  }
+  .join-divider {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+@media (max-width: 768px) {
+  .join-card { padding: 24px; }
+  .room-card { padding: 16px; }
+  .room-stage { aspect-ratio: 4 / 3; }
+  .join-actions { justify-content: stretch; }
+  .join-actions .dash-btn-primary { width: 100%; justify-content: center; }
+  .room-controls { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .room-live-dot,
+  .room-dots i,
+  .join-eq i {
+    animation: none;
+  }
 }
